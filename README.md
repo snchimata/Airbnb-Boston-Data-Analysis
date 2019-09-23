@@ -14,9 +14,9 @@ This project requires **Python 3** and the following Python libraries installed:
 - [WordCloud](https://pypi.org/project/wordcloud/)
 - [scikit-learn](http://scikit-learn.org/stable/)
 - [lightgbm](https://lightgbm.readthedocs.io/en/latest/)
+- [pandas-profiling](https://pandas-profiling.github.io/pandas-profiling/docs/)
 
 [Anaconda](https://www.continuum.io/downloads) is the recommended distribution, a pre-packaged Python distribution that contains all of the necessary libraries or [Google Colab](https://colab.research.google.com/) can be utilized for the project. 
-
 
 ## Project Motivation
 
@@ -36,18 +36,24 @@ Communicate with stakeholders from different backgrounds addressing the below me
 
 5. Identify Prominent features to affect the rental price
 
-
 ## File Descriptions 
 
 There are three CSV files of Boston Airbnb data and a ipynb notebook with exploratory data analysis, sentiment analysis, to Modeling and feature importance etc.
 1. calendar - Price and availability of each Airbnb house.  
 2. listings - Title, description, Amenities, ratings, layouts and everything about each AirBNB house. 
 3. reviews - Data related to comments by guests
-4. Airbnb-Boston-Data-Analysis.ipynb - Notebook with data-driven analysis 
+4. Airbnb-Boston-Data-Analysis.ipynb - Notebook with data-driven analysis. Notebook adheres to CRISP-DM process (Cross Industry Process for Data Mining).
 
 ## Data Preperation Process
 
 Process involves Steps to data cleaning by dropping features/imputing values/wrangling and exploration to answer above mentioned business questions. Data wrangling work is heavy on "listing.csv" to convert data and to extract useful information for the Model consumption. Missing values are interpolated or dropped based on data judgments. Histogram, Scatter plots and Wordclouds are adopted to visualize the results better.
+
+## Modeling Concepts
+Employed the latest Light Gradient Boosting (a.k.a. lightgbm) regressor as a framework together with exhaustive grid search cross validation.
+
+As the name reveals, Light GBM is a gradient boosting framework that uses tree-based learning algorithm. Light GBM grows tree vertically while other algorithm grows trees horizontally meaning that Light GBM grows tree leaf-wise while other algorithm grows level-wise. It will choose the leaf with max delta loss to grow. When growing the same leaf, Leaf-wise algorithm can reduce more loss than a level-wise algorithm.
+
+Light GBM is prefixed as ‘Light’ because of its high speed. Light GBM can handle the large size of data and takes lower memory to run. Another reason why Light GBM is popular is that it focuses on the accuracy of results. LGBM also supports GPU learning, and thus data scientists are widely using LGBM for data science application development.
 
 ## Results
 
